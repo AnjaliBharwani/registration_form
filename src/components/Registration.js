@@ -1,16 +1,19 @@
 import React, {useState} from "react";
 
 const Registration = ()=>{
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [emailValid, setEmailValid] = useState("");
-  const [passwordValid, setPasswordValid] = useState("");
-  const [confirmPasswordValid, setConfirmPasswordValid] = useState("");
+    const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [emailValid, setEmailValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [confirmPasswordValid, setConfirmPasswordValid] = useState(false);
 
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
+
+    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setEmailValid(emailRegex.test(newEmail));
   };
@@ -18,26 +21,33 @@ const Registration = ()=>{
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
+
+    // Password validation
     setPasswordValid(newPassword.length >= 8);
   };
 
   const handleConfirmPasswordChange = (e) => {
     const newConfirmPassword = e.target.value;
     setConfirmPassword(newConfirmPassword);
+
+    // Confirm password validation
     setConfirmPasswordValid(newConfirmPassword === password);
   };
 
   const handleSubmit = () => {
+    
     if (emailValid && passwordValid && confirmPasswordValid) {
       alert('Form submitted successfully');
     } else {
-      alert("Can't submit the form. Please check your inputs.");
+      alert("Form can not be submitted");
     }
   };
 
 
-  return (
-    <div id="from" style ={{display:"flex", justifyContent:"center", paddingTop:"200px"}}>
+    return(
+
+      
+<div id="form">
         <div>
       <div>
         <label>Email:</label>
@@ -77,9 +87,9 @@ const Registration = ()=>{
         {confirmPasswordValid ? null : <p style={{color:"red"}}>Passwords do not match</p>}
       </div>
 
-      <button onClick={handleSubmit}>Submit</button>
+      <button id="button" onClick={handleSubmit}>Sign up</button>
       </div>
-    </div>
-  );
+        </div>
+    )
 }
-export default Registration
+export default Registration;

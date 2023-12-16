@@ -1,0 +1,15 @@
+#form{
+    padding-top: 15%;
+    display:flex;
+    justify-content:center;
+    
+}
+#button{
+    color:white;
+    background-color:blue;
+    border-radius:10px;
+    padding: 8px; 
+    margin-left:36%;
+    margin-top:10px;
+    border:none;
+}
